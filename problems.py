@@ -91,4 +91,4 @@ class PacmanProblem:
             # Show map
             os.system('cls' if os.name == 'nt' else 'clear')
             print(self)
-            time.sleep(0.05)
+            time.sleep(0.075)

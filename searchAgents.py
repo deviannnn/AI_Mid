@@ -49,7 +49,7 @@ class searchAgents:
         while not frontier.empty():
             current_f_value, (current_state, path) = frontier.get()
             explored.add(current_state)
-            #print('\n', current_state, path)
+            #print('\n', current_state, 'f:', current_f_value, path)
             if g.goal_test(current_state):
                 g.target_pos.discard(current_state)
 
@@ -64,11 +64,11 @@ class searchAgents:
             for action, successor in g.get_successors(current_state):
                 if successor not in explored:
                     explored.add(successor)
-                    g_value = len(path) + 1
+                    g_value = 1
                     h_value = heuristic_func(successor, g.target_pos)
                     f_value = g_value + h_value
 
-                    #print("current:", current_state, action, ' -> ', successor, ' f:', f_value)
+                    #print("current:", current_state, ' -> ', action, ' -> ', successor, ' f:', f_value)
                     
                     frontier.put((f_value, (successor, path + [action])))
 
@@ -114,7 +114,7 @@ def algorithm(problem: PacmanProblem):
 while True:
     pacman = PacmanProblem()
 
-    map_chosen = input("Choose Map:\n 1.Small \t 2.Medium \t 3.Big \t 4.SmallCustom\n")
+    map_chosen = input("Choose Map:\n 1.Small \t 2.Medium \t 3.Big \t 4.Small Single\n")
     map_chosen = int(map_chosen)
 
     if map_chosen==1:
@@ -130,7 +130,7 @@ while True:
         algorithm(pacman)
 
     elif map_chosen==4:
-        pacman.load_map("customMaze.lay")
+        pacman.load_map("smallSingleFoodMaze.lay")
         algorithm(pacman)
 
     else:
