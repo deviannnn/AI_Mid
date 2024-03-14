@@ -114,26 +114,22 @@ def algorithm(problem: PacmanProblem):
 while True:
     pacman = PacmanProblem()
 
-    map_chosen = input("Choose Map:\n 1.Small \t 2.Medium \t 3.Big \t 4.Small Single\n")
+    map_chosen = input("Choose Map:\n 1.Small \t 2.Medium \t 3.Big\n")
     map_chosen = int(map_chosen)
 
     if map_chosen==1:
-        pacman.load_map("smallMaze.lay")
+        pacman.load_map("map/smallMaze.lay")
         algorithm(pacman)
 
     elif map_chosen==2:
-        pacman.load_map("mediumMaze.lay")
+        pacman.load_map("map/mediumMaze.lay")
         algorithm(pacman)
 
     elif map_chosen==3:
-        pacman.load_map("bigMaze.lay")
-        algorithm(pacman)
-
-    elif map_chosen==4:
-        pacman.load_map("smallSingleFoodMaze.lay")
+        pacman.load_map("map/bigMaze.lay")
         algorithm(pacman)
 
     else:
         print("smallMaze is chosen as default!")
-        pacman.load_map("smallMaze.lay")
+        pacman.load_map("map/smallMaze.lay")
         algorithm(pacman)
