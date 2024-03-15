@@ -52,9 +52,6 @@ class PacmanProblem:
 
         return successors
 
-    '''def path_cost(self, cost):
-        return cost+1'''
-
     def goal_test(self, state):
         return state in self.target_pos
 

@@ -77,20 +77,18 @@ class searchAgents:
 def algorithm(problem: PacmanProblem):
     searcher = searchAgents()
 
-    searcher_chosen = input("Choose Searcher:\n 1.UCS \t2.A* \n")
-    searcher_chosen = int(searcher_chosen)
+    searcher_chosen = int(input("Choose Searcher:\n 1.UCS \t2.A* \n"))
 
-    if searcher_chosen==1:
+    if searcher_chosen == 1:
         path = searcher.UCS(problem)
 
-    elif searcher_chosen==2:
-        heuristic_chosen = input("Choose Heuristic Func:\n 1.Manhattan \t 2.Euclidean\n")
-        heuristic_chosen = int(heuristic_chosen)
+    elif searcher_chosen == 2:
+        heuristic_chosen = int(input("Choose Heuristic Func:\n 1.Manhattan \t 2.Euclidean\n"))
 
-        if heuristic_chosen==1:
+        if heuristic_chosen == 1:
             path = searcher.A_star(problem, searcher.manhattan)
 
-        elif heuristic_chosen==2:
+        elif heuristic_chosen == 2:
             path = searcher.A_star(problem, searcher.euclidean)
 
         else:
@@ -106,7 +104,7 @@ def algorithm(problem: PacmanProblem):
 
     for countdown in range(3, 0, -1):
         print("Pacman will go in: ", countdown)
-        time.sleep(1.5)
+        time.sleep(1.25)
     
     problem.let_go_pacman(path)
 
@@ -114,22 +112,19 @@ def algorithm(problem: PacmanProblem):
 while True:
     pacman = PacmanProblem()
 
-    map_chosen = input("Choose Map:\n 1.Small \t 2.Medium \t 3.Big\n")
-    map_chosen = int(map_chosen)
+    map_chosen = int(input("Choose Map:\n 1.Small \t 2.Medium \t 3.Big\n"))
 
-    if map_chosen==1:
+    if map_chosen == 1:
         pacman.load_map("map/smallMaze.lay")
-        algorithm(pacman)
 
-    elif map_chosen==2:
+    elif map_chosen == 2:
         pacman.load_map("map/mediumMaze.lay")
-        algorithm(pacman)
 
-    elif map_chosen==3:
+    elif map_chosen == 3:
         pacman.load_map("map/bigMaze.lay")
-        algorithm(pacman)
 
     else:
         print("smallMaze is chosen as default!")
         pacman.load_map("map/smallMaze.lay")
-        algorithm(pacman)
+
+    algorithm(pacman)
